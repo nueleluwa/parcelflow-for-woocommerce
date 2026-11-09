@@ -117,7 +117,7 @@ final class ShipmentsPage {
 			}
 		}
 
-		// Which of these did this store book? (local lookup only; no extra API calls)
+		// Which of these did this store book? Local lookup only, no extra API calls.
 		$local = array();
 		foreach ( $rows as $r ) {
 			if ( ! empty( $r['shipment_number'] ) ) {
