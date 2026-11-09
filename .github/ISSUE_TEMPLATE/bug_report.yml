@@ -1,0 +1,68 @@
+name: Bug report
+description: Something doesn't work as documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not report security vulnerabilities here**: see SECURITY.md.
+        **Never paste access tokens, full API payloads, or customer data.** Redact them first.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Checkout rates
+        - Product fields
+        - Booking
+        - Tracking / My Account
+        - Admin (Shipments / Settings / Logs / Help)
+        - Installation / activation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Plugin, WordPress, WooCommerce, PHP.
+      placeholder: "plugin 0.1.0, WP 7.1, WC 11.2.2, PHP 8.2"
+    validations:
+      required: true
+  - type: dropdown
+    id: checkout
+    attributes:
+      label: Checkout type
+      options: [Classic (shortcode), Checkout Block, Not applicable]
+  - type: dropdown
+    id: hpos
+    attributes:
+      label: HPOS (custom order tables)
+      options: ["Enabled", "Disabled", "Unknown"]
+  - type: dropdown
+    id: api
+    attributes:
+      label: API environment
+      options: ["Staging", "Production", "Not reaching the API"]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log entries
+      description: From ParcelFlow → Logs (details are already redacted) or WP_DEBUG output. Remove anything personal.
+      render: text
