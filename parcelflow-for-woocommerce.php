@@ -6,7 +6,7 @@
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
- * Author:            Emmanuel Egwa, Marvelous Benson, Eureka
+ * Author:            Emmanuel Eluwa, Marvelous Benson, Eureka
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       parcelflow-for-woocommerce

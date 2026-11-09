@@ -1,4 +1,4 @@
-# Copyright (C) 2026 Emmanuel Egwa, Marvelous Benson, Eureka
+# Copyright (C) 2026 Emmanuel Eluwa, Marvelous Benson, Eureka
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Author of the plugin
 #: parcelflow-for-woocommerce.php:9
-msgid "Emmanuel Egwa, Marvelous Benson, Eureka"
+msgid "Emmanuel Eluwa, Marvelous Benson, Eureka"
 msgstr ""
 
 #: admin/views/help.php:20

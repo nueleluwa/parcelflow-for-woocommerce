@@ -1,5 +1,5 @@
 === ParcelFlow for WooCommerce ===
-Contributors: Emmanuel Egwa, Marvelous Benson, Eureka
+Contributors: Emmanuel Eluwa, Marvelous Benson, Eureka
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4

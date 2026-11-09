@@ -192,7 +192,7 @@ Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) fi
 
 ## Authors
 
-Emmanuel Egwa, Marvelous Benson, Eureka.
+Emmanuel Eluwa, Marvelous Benson, Eureka.
 
 ## License
 
