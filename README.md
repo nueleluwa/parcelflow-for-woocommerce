@@ -196,4 +196,4 @@ Emmanuel Eluwa, Marvelous Benson, Eureka.
 
 ## License
 
-GPL-2.0-or-later (see the plugin header in `parcelflow-for-woocommerce.php`).
+Licensed under the [GNU General Public License v2.0 or later](LICENSE) (GPL-2.0-or-later), the same license as WordPress and WooCommerce.
