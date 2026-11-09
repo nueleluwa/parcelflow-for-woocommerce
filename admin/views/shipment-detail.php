@@ -148,7 +148,17 @@ $party = static function ( $p ) {
 					<input type="text" id="pf-rate-id" name="rate_id" class="regular-text" autocomplete="off" />
 					<span class="description"><?php esc_html_e( 'The Calculate Shipment Cost response did not return a rate_id, but Create Shipment requires one. Enter the rate ID supplied by ParcelFlow for this carrier and shipment. It is never guessed.', 'parcelflow-for-woocommerce' ); ?></span></p>
 				<?php endif; ?>
-				<button class="button button-primary pf-btn-primary"><?php esc_html_e( 'Book ParcelFlow shipment', 'parcelflow-for-woocommerce' ); ?></button>
+				<details class="pf-override">
+					<summary><?php esc_html_e( 'Override package weight and size (optional)', 'parcelflow-for-woocommerce' ); ?></summary>
+					<p class="description"><?php esc_html_e( 'Replaces the calculated package for this booking only. Enter all four values or leave them blank. The carrier may charge differently from the rate quoted at checkout.', 'parcelflow-for-woocommerce' ); ?></p>
+					<p>
+						<label><?php esc_html_e( 'Weight (kg)', 'parcelflow-for-woocommerce' ); ?> <input type="number" step="any" min="0" name="pkg_weight" class="small-text" /></label>
+						<label><?php esc_html_e( 'Length (cm)', 'parcelflow-for-woocommerce' ); ?> <input type="number" step="any" min="0" name="pkg_length" class="small-text" /></label>
+						<label><?php esc_html_e( 'Width (cm)', 'parcelflow-for-woocommerce' ); ?> <input type="number" step="any" min="0" name="pkg_width" class="small-text" /></label>
+						<label><?php esc_html_e( 'Height (cm)', 'parcelflow-for-woocommerce' ); ?> <input type="number" step="any" min="0" name="pkg_height" class="small-text" /></label>
+					</p>
+				</details>
+				<p><button class="button button-primary pf-btn-primary"><?php esc_html_e( 'Book ParcelFlow shipment', 'parcelflow-for-woocommerce' ); ?></button></p>
 			</form>
 		</section>
 	<?php endif; ?>

@@ -83,6 +83,12 @@ final class Actions {
 		if ( ! empty( $_POST['rate_id'] ) ) {
 			$opts['rate_id'] = sanitize_text_field( wp_unslash( $_POST['rate_id'] ) );
 		}
+		$opts['package'] = array();
+		foreach ( array( 'weight', 'length', 'width', 'height' ) as $dim ) {
+			if ( isset( $_POST[ 'pkg_' . $dim ] ) ) {
+				$opts['package'][ $dim ] = sanitize_text_field( wp_unslash( $_POST[ 'pkg_' . $dim ] ) );
+			}
+		}
 		$r = BookingService::book( $order_id, $opts );
 		View::flash( $r['ok'] ? 'success' : 'error', $r['message'] );
 		$this->back( Admin::url( 'shipments' ) );

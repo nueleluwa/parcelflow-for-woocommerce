@@ -33,6 +33,10 @@ $base_arg = array_filter(
 <div class="wrap parcelflow-admin">
 	<?php View::header( __( 'Shipments', 'parcelflow-for-woocommerce' ) ); ?>
 	<hr class="wp-header-end" />
+	<nav class="nav-tab-wrapper pf-tabs" aria-label="<?php esc_attr_e( 'Shipment views', 'parcelflow-for-woocommerce' ); ?>">
+		<a href="<?php echo esc_url( Admin::url( 'shipments' ) ); ?>" class="nav-tab nav-tab-active"><?php esc_html_e( 'This store', 'parcelflow-for-woocommerce' ); ?></a>
+		<a href="<?php echo esc_url( Admin::url( 'shipments', array( 'tab' => 'api-history' ) ) ); ?>" class="nav-tab"><?php esc_html_e( 'ParcelFlow history (API)', 'parcelflow-for-woocommerce' ); ?></a>
+	</nav>
 
 	<ul class="pf-stats" aria-label="<?php esc_attr_e( 'Shipment totals', 'parcelflow-for-woocommerce' ); ?>">
 		<li><span class="pf-stats__n"><?php echo esc_html( number_format_i18n( $counts['all'] ) ); ?></span><span class="pf-stats__l"><?php esc_html_e( 'Total shipments', 'parcelflow-for-woocommerce' ); ?></span></li>

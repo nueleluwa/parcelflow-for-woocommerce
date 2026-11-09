@@ -81,6 +81,7 @@ $yes = static function ( $b ) {
 		<h2><?php esc_html_e( 'Set-up checklist', 'parcelflow-for-woocommerce' ); ?></h2>
 		<ol>
 			<li><?php echo wp_kses_post( sprintf( /* translators: %s: URL */ __( 'Enter the API base URL and access token in <a href="%s">Settings → General</a> and enable ParcelFlow.', 'parcelflow-for-woocommerce' ), esc_url( Admin::url( 'settings' ) ) ) ); ?></li>
+			<li><?php esc_html_e( 'Choose the default shipment type under Settings → Shipping & Booking. It is required: the API documentation gives no rule for picking one, so rates are not requested until you do.', 'parcelflow-for-woocommerce' ); ?></li>
 			<li><?php esc_html_e( 'Fill in the sender / warehouse address (Settings → Sender). This is the dispatch address, not necessarily the store address.', 'parcelflow-for-woocommerce' ); ?></li>
 			<li><?php esc_html_e( 'Add a ParcelFlow method to a WooCommerce shipping zone (WooCommerce → Settings → Shipping → zone → Add shipping method → ParcelFlow).', 'parcelflow-for-woocommerce' ); ?></li>
 			<li><?php esc_html_e( 'On every product set weight, dimensions (or use a fixed carton) and the HS tariff code (Product data → Shipping).', 'parcelflow-for-woocommerce' ); ?></li>

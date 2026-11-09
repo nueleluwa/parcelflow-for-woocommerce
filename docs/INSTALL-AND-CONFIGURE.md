@@ -19,7 +19,7 @@
 
 **Sender / Warehouse** – the *dispatch* address (all fields required by the API).
 
-**Shipping & Booking** – shipment type (auto or fixed), package type, **booking mode (leave on Manual)**, payment method (`Wallet`), station IDs, pickup/insurance (only with values from ParcelFlow), package dimension strategy (a **fixed carton** is recommended), packaging weight, fallback HS code/weight (optional), declared-value basis.
+**Shipping & Booking** – **shipment type (required: choose Local, Interstate, International or Import; rates are not requested until you do)**, package type, **booking mode (leave on Manual)**, payment method (`Wallet`), station IDs, pickup/insurance (only with values from ParcelFlow), package dimension strategy (a **fixed carton** is recommended), packaging weight, fallback HS code/weight (optional), declared-value basis.
 
 **Carriers / Services** – hide carriers (list fills from real rate responses); add service lines `id|label|amount`.
 

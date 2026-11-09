@@ -109,13 +109,20 @@ final class BookingService {
 		$built    = PackageBuilder::from_order( $order );
 		$carton   = array();
 		$msgs     = array_merge( $msgs, $sender['errors'], $receiver['errors'], $built['errors'] );
+		$override = self::package_override( $opts );
+		$msgs     = array_merge( $msgs, $override['errors'] );
 		if ( ! $built['errors'] ) {
 			$carton = PackageBuilder::carton( $built['lines'] );
-			$msgs   = array_merge( $msgs, $carton['errors'] );
+			if ( $override['values'] ) {
+				// Administrator-entered carton: replaces the calculated weight/dimensions
+				// (including "missing dimensions" errors). Item-level data is untouched.
+				$carton = array_merge( $carton, $override['values'], array( 'errors' => array() ) );
+			}
+			$msgs = array_merge( $msgs, $carton['errors'] );
 		}
 		$type = PayloadMapper::shipment_type( $sender, $receiver );
 		if ( '' === $type ) {
-			$msgs[] = __( 'Shipment type could not be determined.', 'parcelflow-for-woocommerce' );
+			$msgs[] = __( 'Shipment type is not set. Choose one under ParcelFlow > Settings > Shipping & Booking.', 'parcelflow-for-woocommerce' );
 		}
 		if ( Settings::rate_currency() !== $order->get_currency() ) {
 			$msgs[] = __( 'The order currency differs from the ParcelFlow price currency; no conversion is performed.', 'parcelflow-for-woocommerce' );
@@ -145,6 +152,18 @@ final class BookingService {
 				array( 'request_json' => wp_json_encode( $payload ) )
 			)
 		);
+		if ( $override['values'] ) {
+			$order->add_order_note(
+				sprintf(
+					/* translators: 1: weight kg, 2: length, 3: width, 4: height */
+					__( 'ParcelFlow booking uses an administrator package override: %1$s kg, %2$s x %3$s x %4$s cm.', 'parcelflow-for-woocommerce' ),
+					$override['values']['weight'],
+					$override['values']['length'],
+					$override['values']['width'],
+					$override['values']['height']
+				)
+			);
+		}
 		Logger::log(
 			array(
 				'event_type' => 'booking',
@@ -202,6 +221,52 @@ final class BookingService {
 		}
 
 		return self::uncertain( $order, $res->message );
+	}
+
+	/**
+	 * Validate an optional administrator package override.
+	 *
+	 * Either all four values (weight kg; length, width, height cm; each > 0) or none.
+	 *
+	 * @param array $opts Booking options; optional key 'package'.
+	 * @return array{values:array|null,errors:string[]}
+	 */
+	public static function package_override( array $opts ) {
+		if ( empty( $opts['package'] ) || ! is_array( $opts['package'] ) ) {
+			return array(
+				'values' => null,
+				'errors' => array(),
+			);
+		}
+		$keys   = array( 'weight', 'length', 'width', 'height' );
+		$given  = array();
+		$values = array();
+		foreach ( $keys as $k ) {
+			$v = isset( $opts['package'][ $k ] ) ? trim( (string) $opts['package'][ $k ] ) : '';
+			if ( '' !== $v ) {
+				$given[] = $k;
+			}
+			$values[ $k ] = $v;
+		}
+		if ( ! $given ) {
+			return array(
+				'values' => null,
+				'errors' => array(),
+			);
+		}
+		foreach ( $keys as $k ) {
+			if ( '' === $values[ $k ] || ! is_numeric( $values[ $k ] ) || (float) $values[ $k ] <= 0 || (float) $values[ $k ] > 100000 ) {
+				return array(
+					'values' => null,
+					'errors' => array( __( 'Package override: enter weight, length, width and height as positive numbers, or leave all four blank.', 'parcelflow-for-woocommerce' ) ),
+				);
+			}
+			$values[ $k ] = round( (float) $values[ $k ], 3 );
+		}
+		return array(
+			'values' => $values,
+			'errors' => array(),
+		);
 	}
 
 	/* ------------------------------ Reconcile ---------------------------- */

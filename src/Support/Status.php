@@ -2,10 +2,12 @@
 /**
  * Maps ParcelFlow status strings onto the dashboard groups.
  *
- * The API documents only a few status strings ("Created", "Pending", "In Transit",
- * "Delivered" ...) and says the list is open-ended ("etc."). The raw API status is
- * always displayed and stored unchanged; the grouping below is used ONLY for the
- * dashboard counters/filters and is deliberately keyword-based and conservative.
+ * Source of truth: the ParcelFlow Shipments API documentation. It names only these shipment
+ * statuses: "Created" (create-shipment response), and "Pending", "In Transit", "Delivered"
+ * (get-shipment-history filter, which then says "etc."). Only those are recognised. Any other
+ * value is displayed exactly as returned and counted under "Processing"; no other status
+ * text is interpreted or invented. The "Failed" group reflects this plugin's own booking
+ * states (failed / uncertain), never an API status.
  *
  * @package ParcelFlow\WooCommerce
  */
@@ -58,27 +60,22 @@ final class Status {
 			return 'failed';
 		}
 		$s = strtolower( trim( (string) $api_status ) );
-		foreach ( array( 'cancel', 'fail', 'return', 'exception', 'reject' ) as $w ) {
-			if ( false !== strpos( $s, $w ) ) {
-				return 'failed';
-			}
-		}
 		if ( 'delivered' === $s ) {
 			return 'delivered';
 		}
-		foreach ( array( 'transit', 'picked up', 'going to deliver', 'out for', 'dispatch', 'shipped' ) as $w ) {
-			if ( false !== strpos( $s, $w ) ) {
-				return 'in_transit';
-			}
+		if ( 'in transit' === $s ) {
+			return 'in_transit';
+		}
+		if ( 'pending' === $s ) {
+			return 'pending';
 		}
 		return 'processing';
 	}
 
 	/**
-	 * Final statuses need no more tracking refreshes.
+	 * Only "Delivered" is known to be final; every other status keeps being refreshed.
 	 */
 	public static function is_final( $state, $api_status ) {
-		return ( self::STATE_BOOKED === $state && 'delivered' === self::group( $state, $api_status ) )
-			|| false !== strpos( strtolower( (string) $api_status ), 'cancel' );
+		return self::STATE_BOOKED === $state && 'delivered' === self::group( $state, $api_status );
 	}
 }

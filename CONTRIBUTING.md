@@ -5,7 +5,7 @@ safety and honesty about what is and isn't verified.
 
 ## Ground rules
 
-1. **Don't invent API behaviour.** The ParcelFlow Shipments API documentation is the source of truth. If a field,
+1. **Don't invent API behaviour.** The ParcelFlow Shipments API documentation is the **only** source of truth (see [docs/API-CONFORMANCE.md](docs/API-CONFORMANCE.md)). If a field,
    endpoint, ID or response shape isn't documented, isolate the dependency, document the question in
    [docs/API-QUESTIONS.md](docs/API-QUESTIONS.md), and don't guess. In particular, never derive or fabricate a `rate_id`,
    a price, or a shipment status.

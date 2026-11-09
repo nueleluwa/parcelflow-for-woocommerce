@@ -52,11 +52,14 @@ final class ParsingTest extends BaseTestCase {
 		$this->assertSame( 'delivered', Status::group( 'booked', 'Delivered' ) );
 		$this->assertSame( 'in_transit', Status::group( 'booked', 'In Transit' ) );
 		$this->assertSame( 'processing', Status::group( 'booked', 'Created' ) );
-		$this->assertSame( 'failed', Status::group( 'booked', 'Cancelled' ) );
+		$this->assertSame( 'pending', Status::group( 'booked', 'Pending' ) );
+		$this->assertSame( 'processing', Status::group( 'booked', 'Some Status Not In The Docs' ), 'undocumented statuses are not interpreted' );
+		$this->assertSame( 'processing', Status::group( 'booked', 'Cancelled' ) );
 		$this->assertSame( 'failed', Status::group( 'uncertain', '' ) );
 		$this->assertSame( 'pending', Status::group( 'awaiting', '' ) );
 		$this->assertTrue( Status::is_final( 'booked', 'Delivered' ) );
 		$this->assertFalse( Status::is_final( 'booked', 'In Transit' ) );
+		$this->assertFalse( Status::is_final( 'booked', 'Cancelled' ), 'only Delivered is known to be final' );
 	}
 
 	public function test_tracking_events_sorted_and_empty_status_kept() {

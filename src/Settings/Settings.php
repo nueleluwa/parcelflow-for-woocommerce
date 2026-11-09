@@ -163,16 +163,17 @@ final class Settings {
 			'shipment_type_mode'       => array(
 				'tab'     => 'shipping',
 				'type'    => 'select',
-				'default' => 'auto',
+				'default' => '',
 				'label'   => __( 'Default shipment type', 'parcelflow-for-woocommerce' ),
 				'options' => array(
-					'auto'          => __( 'Auto-detect from sender and destination', 'parcelflow-for-woocommerce' ),
+					''              => __( '— Select (required) —', 'parcelflow-for-woocommerce' ),
 					'Local'         => 'Local',
 					'Interstate'    => 'Interstate',
 					'International' => 'International',
 					'Import'        => 'Import',
+					'auto'          => __( 'Auto-detect (experimental, NOT defined by the API documentation)', 'parcelflow-for-woocommerce' ),
 				),
-				'desc'    => __( 'Auto-detect: different country = International; same country and state = Local; same country, different state = Interstate. ParcelFlow has not confirmed these business rules (see Help). "Import" is never auto-selected.', 'parcelflow-for-woocommerce' ),
+				'desc'    => __( 'The API documentation lists these four values but does not say how to choose between them, so you must choose. No rates are requested until a type is selected. Auto-detect is an unconfirmed guess made by this plugin (different country = International; same country and state = Local; same country, different state = Interstate) and has not been confirmed by ParcelFlow.', 'parcelflow-for-woocommerce' ),
 			),
 			'package_type'             => array(
 				'tab'     => 'shipping',
@@ -261,13 +262,13 @@ final class Settings {
 			'carton_strategy'          => array(
 				'tab'     => 'shipping',
 				'type'    => 'select',
-				'default' => 'stacked',
+				'default' => 'fixed',
 				'label'   => __( 'Package dimension strategy', 'parcelflow-for-woocommerce' ),
 				'options' => array(
-					'stacked' => __( 'Estimate: largest length & width, heights stacked', 'parcelflow-for-woocommerce' ),
-					'fixed'   => __( 'Fixed carton dimensions (below)', 'parcelflow-for-woocommerce' ),
+					'fixed'   => __( 'Fixed carton dimensions (below), recommended', 'parcelflow-for-woocommerce' ),
+					'stacked' => __( 'Estimate from products (experimental, NOT defined by the API documentation)', 'parcelflow-for-woocommerce' ),
 				),
-				'desc'    => __( 'The whole cart is sent as ONE package. Product dimensions are never simply added together. Use a fixed carton for predictable results.', 'parcelflow-for-woocommerce' ),
+				'desc'    => __( 'The API requires package length, width and height but does not say how to derive them from a cart, so enter the carton you actually ship in. The whole cart is sent as ONE package. The experimental estimate uses the largest length and width with heights stacked; it is an unconfirmed heuristic of this plugin, not defined by ParcelFlow. Until dimensions are available no rates are requested.', 'parcelflow-for-woocommerce' ),
 			),
 			'carton_length'            => array(
 				'tab'     => 'shipping',

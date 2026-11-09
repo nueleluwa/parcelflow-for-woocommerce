@@ -50,6 +50,11 @@ final class ShipmentsPage {
 			$this->render_detail( $view_id );
 			return;
 		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['tab'] ) && 'api-history' === sanitize_key( wp_unslash( $_GET['tab'] ) ) ) {
+			$this->render_api_history();
+			return;
+		}
 
 		$filters = self::read_filters();
 		$paged   = isset( $_GET['paged'] ) ? max( 1, absint( $_GET['paged'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -73,6 +78,67 @@ final class ShipmentsPage {
 				'pages'      => (int) ceil( $data['total'] / self::PER_PAGE ),
 				'counts'     => ShipmentRepository::counts(),
 				'export_url' => wp_nonce_url( add_query_arg( array_filter( array_merge( $filters, array( 'action' => 'parcelflow_wc_export_csv' ) ) ), admin_url( 'admin-post.php' ) ), 'parcelflow_wc_export' ),
+			)
+		);
+	}
+
+	/**
+	 * Read-only browser for GET /get-shipment-history (documented date range, status, limit, offset).
+	 * One API call per page view; requires only the page capability.
+	 */
+	private function render_api_history() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- read-only filters.
+		$date   = static function ( $key, $fallback ) {
+			$v = isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : '';
+			return preg_match( '/^\d{4}-\d{2}-\d{2}$/', $v ) ? $v : $fallback;
+		};
+		$from   = $date( 'date_from', gmdate( 'Y-m-d', time() - 30 * DAY_IN_SECONDS ) );
+		$to     = $date( 'date_to', gmdate( 'Y-m-d' ) );
+		$status = isset( $_GET['status'] ) ? trim( sanitize_text_field( wp_unslash( $_GET['status'] ) ) ) : '';
+		$status = '' === $status ? 'All' : substr( $status, 0, 40 );
+		$paged  = isset( $_GET['paged'] ) ? max( 1, absint( $_GET['paged'] ) ) : 1;
+		// phpcs:enable
+
+		$error = '';
+		$rows  = array();
+		$more  = false;
+		if ( $from > $to ) {
+			$error = __( 'The start date must not be after the end date.', 'parcelflow-for-woocommerce' );
+		} else {
+			// Ask for one extra record to know whether a next page exists (no total is documented).
+			$res = ( new Client() )->get_shipment_history( $from, $to, $status, self::PER_PAGE + 1, ( $paged - 1 ) * self::PER_PAGE );
+			if ( ! $res->success ) {
+				$error = $res->message;
+			} else {
+				$data = $res->data();
+				$data = is_array( $data ) ? array_values( array_filter( $data, 'is_array' ) ) : array();
+				$more = count( $data ) > self::PER_PAGE;
+				$rows = array_slice( $data, 0, self::PER_PAGE );
+			}
+		}
+
+		// Which of these did this store book? (local lookup only; no extra API calls)
+		$local = array();
+		foreach ( $rows as $r ) {
+			if ( ! empty( $r['shipment_number'] ) ) {
+				$hit = ShipmentRepository::find_by_reference( (string) $r['shipment_number'] );
+				if ( $hit ) {
+					$local[ $r['shipment_number'] ] = $hit;
+				}
+			}
+		}
+
+		View::render(
+			'shipments-api-history',
+			array(
+				'from'   => $from,
+				'to'     => $to,
+				'status' => $status,
+				'paged'  => $paged,
+				'more'   => $more,
+				'rows'   => $rows,
+				'local'  => $local,
+				'error'  => $error,
 			)
 		);
 	}

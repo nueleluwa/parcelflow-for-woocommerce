@@ -69,7 +69,7 @@ $tracking = $order->get_meta( '_parcelflow_tracking_number' );
 ## Database tables
 
 `{prefix}parcelflow_shipments`: one row per order (`UNIQUE order_id`), columns include `state`, `status_group`
-(`pending|processing|in_transit|delivered|failed`, derived by keyword from the API status for dashboard counts only),
+(`pending|processing|in_transit|delivered|failed`; derived only from the four statuses the API documentation names plus the plugin's own booking state, for dashboard counts),
 `shipment_number`, `tracking_number`, `label_url`, `status`, `carrier_*`, `rate_id`, `shipping_fee`, `total_fee`,
 `request_json`, `events_json`, timestamps (UTC).
 

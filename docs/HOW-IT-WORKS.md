@@ -8,8 +8,9 @@
    rate*, a neutral message for the customer, and a reason in **ParcelFlow → Logs** (“Rates not requested: …”).
 3. `PackageBuilder` turns items into one carton: weight = Σ(unit weight × quantity) + packaging weight;
    dimensions = the fixed carton, or *longest length, widest width, heights stacked* (never a blind sum).
-4. `PayloadMapper` builds the documented `calculate-shipment` payload. Shipment type is auto-detected (different country →
-   International; same country and state → Local; same country, different state → Interstate) unless pinned in settings.
+4. `PayloadMapper` builds the documented `calculate-shipment` payload. The **shipment type must be chosen in Settings**: the API
+   documentation lists Local / Interstate / International / Import but gives no rule for choosing, so none is assumed (an
+   experimental auto-detect is available but off by default). Until a type is chosen no rates are requested.
 5. `RateService` calls the API (or serves a short-lived cached copy), parses carriers, drops any without an ID or parseable
    `selling_price`, and applies the carriers you've hidden in Settings.
 6. Each carrier becomes a `WC_Shipping_Rate` whose metadata (`_parcelflow_*`) is copied by WooCommerce onto the order's
@@ -64,7 +65,8 @@ A booking left `in_progress` for over 10 minutes (e.g. a crash) is moved to `unc
   shipments booked through this store (shipment *or* tracking number), shows status and events only (never addresses),
   validates input, caches for 3 minutes and is throttled per IP. The API is always queried by shipment number.
 - Events are shown as returned, in chronological order. The plugin never invents a status; an empty API status never
-  overwrites a known one.
+  overwrites a known one. Only the statuses named in the documentation (Created, Pending, In Transit, Delivered) are
+  interpreted; anything else is shown verbatim.
 
 ## 5. Roles
 

@@ -95,7 +95,7 @@ Full steps: [docs/INSTALL-AND-CONFIGURE.md](docs/INSTALL-AND-CONFIGURE.md).
    (stored encrypted), then **Help / API Status → Test connection**.
    *Only administrators can open Settings.*
 2. **Sender / Warehouse:** enter the dispatch address (all fields are required by the API).
-3. **Shipping & Booking:** keep **Booking mode = Manual**. Prefer a **fixed carton** size.
+3. **Shipping & Booking:** choose the **shipment type** (required: rates are not requested until you do), keep **Booking mode = Manual**, and prefer a **fixed carton** size.
 4. **WooCommerce → Settings → Shipping:** open a zone → *Add shipping method* → **ParcelFlow**.
 5. **Products:** set weight, dimensions and the **HS tariff code** (Product data → Shipping).
 6. Place a test order on staging. After payment, open **ParcelFlow → Shipments** and book it.
@@ -147,6 +147,7 @@ See [docs/KNOWN-LIMITATIONS.md](docs/KNOWN-LIMITATIONS.md).
 |---|---|
 | [Install & configure](docs/INSTALL-AND-CONFIGURE.md) | Store owners / admins |
 | [How it works](docs/HOW-IT-WORKS.md) | Everyone: workflow, booking states, data stored |
+| [API conformance](docs/API-CONFORMANCE.md) | Field-by-field mapping to the ParcelFlow API documentation (the source of truth) |
 | [Developer reference](docs/DEVELOPER-REFERENCE.md) | Hooks, filters, constants, options, meta, tables, jobs |
 | [Known limitations](docs/KNOWN-LIMITATIONS.md) | Everyone |
 | [API questions for ParcelFlow](docs/API-QUESTIONS.md) | ParcelFlow team / project owners |

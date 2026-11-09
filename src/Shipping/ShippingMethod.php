@@ -107,7 +107,7 @@ class ShippingMethod extends \WC_Shipping_Method {
 		$type = PayloadMapper::shipment_type( $sender, $receiver );
 		if ( '' === $type ) {
 			self::$notice = __( 'Shipping rates are currently unavailable.', 'parcelflow-for-woocommerce' );
-			$this->log_blocked_once( 'type', __( 'Shipment type could not be determined (sender or receiver country missing).', 'parcelflow-for-woocommerce' ) );
+			$this->log_blocked_once( 'type', __( 'Shipment type is not set. Choose one under ParcelFlow > Settings > Shipping & Booking.', 'parcelflow-for-woocommerce' ) );
 			return;
 		}
 

@@ -114,13 +114,7 @@ final class PayloadMapper {
 		$country_code = strtoupper( (string) $raw['country'] );
 		$state_code   = (string) $raw['state'];
 		$state_name   = '' !== $country_code ? self::state_name( $country_code, $state_code ) : $state_code;
-		if ( '' === trim( $state_name ) && '' !== $country_code && empty( WC()->countries->get_states( $country_code ) ) ) {
-			// The API requires a non-empty state, but WooCommerce collects none for countries
-			// without a state list (e.g. the UK). Use the city as the state/province value.
-			// This is an ASSUMPTION listed in docs/API-QUESTIONS.md.
-			$state_name = trim( (string) $raw['city'] );
-		}
-		$party = array(
+		$party        = array(
 			'name'      => Format::alnum( $raw['name'], 100 ),
 			'address_1' => trim( (string) $raw['address_1'] ),
 			'address_2' => trim( (string) $raw['address_2'] ),
@@ -175,14 +169,17 @@ final class PayloadMapper {
 	/**
 	 * Local / Interstate / International / Import.
 	 *
-	 * UNCONFIRMED BUSINESS RULE (see docs/API-QUESTIONS.md). Auto mode uses the simplest
-	 * defensible mapping and the administrator can pin a fixed type in settings.
+	 * The API documentation defines no rule for choosing a type, so the administrator must choose one
+	 * (or opt in to the experimental auto-detect). Empty means "not chosen".
 	 *
 	 * @param array $sender   sender() result.
 	 * @param array $receiver receiver result.
 	 */
 	public static function shipment_type( array $sender, array $receiver ) {
-		$mode = (string) Settings::get( 'shipment_type_mode', 'auto' );
+		$mode = (string) Settings::get( 'shipment_type_mode', '' );
+		if ( '' === $mode ) {
+			return ''; // Not chosen: the API documentation defines no rule, so none is assumed.
+		}
 		if ( 'auto' !== $mode ) {
 			return $mode;
 		}

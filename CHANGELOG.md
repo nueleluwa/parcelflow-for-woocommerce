@@ -5,7 +5,16 @@ the project aims to follow [Semantic Versioning](https://semver.org/) once it re
 
 ## [Unreleased]
 
+### Changed (API documentation is the only source of truth)
+- **Shipment type must now be chosen** in Settings; there is no default and no rates are requested until it is set. Auto-detect is opt-in, labelled experimental and not defined by the API documentation.
+- **Package dimensions default to a fixed carton** entered by the administrator; the product-based estimate is opt-in and labelled experimental.
+- **No invented `state`:** countries without a WooCommerce state list no longer have the city substituted; rates are blocked with "state is missing".
+- **Dashboard status grouping** recognises only the statuses named in the documentation (Created, Pending, In Transit, Delivered); other values are shown verbatim under Processing. Only Delivered is treated as final.
+
 ### Added
+- `docs/API-CONFORMANCE.md`: field-by-field mapping of everything sent/read to the API documentation, plus every place the documentation is silent and what the plugin does instead.
+- ParcelFlow history (API) tab on Shipments: read-only browser for `get-shipment-history` with the documented date range, status and pagination parameters.
+- Optional package override (weight/length/width/height) on the booking form, recorded in an order note; all four values or none.
 - GitHub documentation: expanded README, how-it-works guide, developer reference, contributing guide, security policy,
   issue and pull-request templates.
 
