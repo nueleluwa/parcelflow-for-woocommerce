@@ -1,0 +1,73 @@
+/*
+ * ParcelFlow admin styles. Follows WordPress admin conventions; green is the brand accent.
+ * Tokens
+ *   deep green   #0b5d3b   hover #084a2f
+ *   muted green  #eaf4ee   border #d5e0d9
+ *   charcoal     #1d2327   grey  #646970
+ */
+.parcelflow-admin { --pf-green: #0b5d3b; --pf-green-dark: #084a2f; --pf-muted: #eaf4ee; --pf-border: #d5e0d9; --pf-text: #1d2327; --pf-grey: #646970; }
+
+.parcelflow-admin .pf-header { display: flex; align-items: center; gap: 16px; margin: 8px 0 12px; }
+.parcelflow-admin .pf-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--pf-green); padding-right: 16px; border-right: 1px solid var(--pf-border); }
+.parcelflow-admin .pf-brand__mark { width: 18px; height: 18px; background: var(--pf-green); border-radius: 3px; display: inline-block; }
+.parcelflow-admin .pf-title { margin: 0; padding: 0; font-size: 22px; font-weight: 600; }
+
+/* Buttons */
+.parcelflow-admin .pf-btn-primary,
+.parcelflow-admin .button-primary { background: var(--pf-green); border-color: var(--pf-green); }
+.parcelflow-admin .pf-btn-primary:hover, .parcelflow-admin .pf-btn-primary:focus,
+.parcelflow-admin .button-primary:hover, .parcelflow-admin .button-primary:focus { background: var(--pf-green-dark); border-color: var(--pf-green-dark); }
+.parcelflow-admin a { color: var(--pf-green); }
+.parcelflow-admin a:hover { color: var(--pf-green-dark); }
+.parcelflow-admin .nav-tab-active, .parcelflow-admin .nav-tab-active:hover { border-bottom-color: #fff; color: var(--pf-green); box-shadow: inset 0 3px 0 var(--pf-green); }
+.parcelflow-admin .subsubsub a.current { color: var(--pf-green); font-weight: 600; }
+.parcelflow-admin input[type="checkbox"]:checked::before { color: var(--pf-green); }
+.parcelflow-admin input:focus, .parcelflow-admin select:focus, .parcelflow-admin textarea:focus { border-color: var(--pf-green); box-shadow: 0 0 0 1px var(--pf-green); }
+
+/* Stats strip */
+.parcelflow-admin .pf-stats { display: flex; flex-wrap: wrap; margin: 0 0 12px; padding: 0; list-style: none; background: #fff; border: 1px solid var(--pf-border); }
+.parcelflow-admin .pf-stats li { flex: 1 1 110px; padding: 10px 14px; border-right: 1px solid var(--pf-border); margin: 0; }
+.parcelflow-admin .pf-stats li:last-child { border-right: 0; }
+.parcelflow-admin .pf-stats__n { display: block; font-size: 22px; font-weight: 600; line-height: 1.2; color: var(--pf-text); }
+.parcelflow-admin .pf-stats__l { color: var(--pf-grey); font-size: 12px; }
+.parcelflow-admin .pf-stats--delivered .pf-stats__n { color: var(--pf-green); }
+.parcelflow-admin .pf-stats--failed .pf-stats__n { color: #b32d2e; }
+
+.parcelflow-admin .pf-subsubsub { margin-bottom: 6px; }
+.parcelflow-admin .pf-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; clear: both; }
+.parcelflow-admin .pf-search { min-width: 260px; }
+.parcelflow-admin .pf-btn-secondary { color: var(--pf-text); }
+
+/* Tables and pills */
+.parcelflow-admin .pf-table thead th { font-weight: 600; }
+.parcelflow-admin .pf-pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 12px; line-height: 1.6; background: #f0f0f1; color: var(--pf-text); border: 1px solid #dcdcde; }
+.parcelflow-admin .pf-pill--delivered { background: var(--pf-muted); color: var(--pf-green); border-color: var(--pf-border); }
+.parcelflow-admin .pf-pill--in_transit { background: #fff; color: var(--pf-green); border-color: var(--pf-green); }
+.parcelflow-admin .pf-pill--failed { background: #fcf0f1; color: #b32d2e; border-color: #f0c8ca; }
+.parcelflow-admin .pf-pill--pending { background: #fcf9e8; color: #6e5a00; border-color: #eee0a0; }
+.parcelflow-admin .pf-ok { color: var(--pf-green); font-weight: 600; }
+.parcelflow-admin .pf-no { color: #b32d2e; font-weight: 600; }
+
+/* Cards */
+.parcelflow-admin .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 16px; }
+.parcelflow-admin .pf-card { background: #fff; border: 1px solid var(--pf-border); border-top: 3px solid var(--pf-green); padding: 4px 16px 14px; margin-bottom: 16px; }
+.parcelflow-admin .pf-grid .pf-card { margin-bottom: 0; }
+.parcelflow-admin .pf-card h2 { font-size: 15px; margin: 12px 0; }
+.parcelflow-admin .pf-kv { width: 100%; border-collapse: collapse; }
+.parcelflow-admin .pf-kv th { text-align: left; width: 42%; padding: 6px 8px 6px 0; font-weight: 600; color: var(--pf-grey); vertical-align: top; }
+.parcelflow-admin .pf-kv td { padding: 6px 0; }
+.parcelflow-admin .pf-card address { font-style: normal; line-height: 1.6; }
+.parcelflow-admin .pf-pre { background: #f6f7f7; border: 1px solid #dcdcde; padding: 12px; overflow: auto; max-height: 480px; }
+
+.parcelflow-admin .pf-timeline { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--pf-border); }
+.parcelflow-admin .pf-timeline li { position: relative; padding: 0 0 12px 14px; margin: 0; }
+.parcelflow-admin .pf-timeline li::before { content: ""; position: absolute; left: -22px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--pf-green); }
+.parcelflow-admin .pf-timeline__time { display: block; color: var(--pf-grey); font-size: 12px; }
+
+.parcelflow-admin .pf-clear-logs { margin-top: 16px; }
+.parcelflow-admin.pf-metabox .pf-pill { margin-bottom: 4px; }
+.parcelflow-admin .pf-actions a { white-space: nowrap; }
+
+@media (max-width: 782px) {
+	.parcelflow-admin .pf-search { min-width: 0; width: 100%; }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ruleset name="ParcelFlow">
+	<description>WordPress coding standards for ParcelFlow for WooCommerce.</description>
+	<file>.</file>
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/tests/</exclude-pattern>
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="ps"/>
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.4"/>
+	<rule ref="WordPress">
+		<!-- PSR-4 class files (src/Foo/Bar.php) instead of class-foo-bar.php -->
+		<exclude name="WordPress.Files.FileName"/>
+		<exclude name="Universal.Files.SeparateFunctionsFromOO"/>
+	</rule>
+	<rule ref="PHPCompatibilityWP"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties><property name="text_domain" type="array"><element value="parcelflow-for-woocommerce"/></property></properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties><property name="prefixes" type="array"><element value="parcelflow"/><element value="ParcelFlow"/><element value="PARCELFLOW"/></property></properties>
+	</rule>
+	<!-- Docblock style only (not security/correctness): not enforced on every method/class. -->
+	<rule ref="Squiz.Commenting.FunctionComment.Missing"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FunctionComment.MissingParamTag"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FunctionComment.WrongStyle"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FunctionComment.ParamNameNoMatch"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FunctionComment.IncorrectTypeHint"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.ClassComment.Missing"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.VariableComment.MissingVar"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.BlockComment.CloserSameLine"><severity>0</severity></rule>
+	<rule ref="Squiz.Commenting.FileComment.MissingPackageTag"><severity>0</severity></rule>
+	<rule ref="Generic.Commenting.DocComment.MissingShort"><severity>0</severity></rule>
+	<rule ref="Generic.Commenting.DocComment.ShortNotCapital"><severity>0</severity></rule>
+	<!-- Hook callbacks must keep the signature WordPress/WooCommerce passes. -->
+	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"><severity>0</severity></rule>
+	<!-- manage_woocommerce is a WooCommerce capability. -->
+	<rule ref="WordPress.WP.Capabilities"><properties><property name="custom_capabilities" type="array"><element value="manage_woocommerce"/></property></properties></rule>
+	<!-- Template files are included inside a method scope; their locals are not globals. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound"><exclude-pattern>/admin/views/</exclude-pattern><exclude-pattern>/frontend/views/</exclude-pattern></rule>
+	<rule ref="WordPress.WP.GlobalVariablesOverride.Prohibited"><exclude-pattern>/admin/views/</exclude-pattern><exclude-pattern>/frontend/views/</exclude-pattern></rule>
+</ruleset>

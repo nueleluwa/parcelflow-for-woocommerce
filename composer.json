@@ -1,0 +1,18 @@
+{
+  "name": "parcelflow/parcelflow-for-woocommerce",
+  "description": "ParcelFlow for WooCommerce (dev tooling only; the plugin has no runtime dependencies).",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": { "php": ">=7.4" },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6",
+    "wp-coding-standards/wpcs": "^3.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpcompatibility/phpcompatibility-wp": "^2.1"
+  },
+  "config": { "allow-plugins": { "dealerdirect/phpcodesniffer-composer-installer": true }, "sort-packages": true },
+  "scripts": {
+    "lint": "phpcs",
+    "test": "phpunit"
+  }
+}

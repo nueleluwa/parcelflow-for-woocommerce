@@ -1,0 +1,1719 @@
+# Copyright (C) 2026 Emmanuel Egwa, Marvelous Benson, Eureka
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ParcelFlow for WooCommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/parcelflow-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-09T17:24:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: parcelflow-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: parcelflow-for-woocommerce.php:3
+msgid "ParcelFlow for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+#: parcelflow-for-woocommerce.php:4
+msgid "Integrates ParcelFlow shipping services with WooCommerce, enabling real-time shipping rate calculations, carrier selection, shipment booking and delivery tracking."
+msgstr ""
+
+#. Author of the plugin
+#: parcelflow-for-woocommerce.php:9
+msgid "Emmanuel Egwa, Marvelous Benson, Eureka"
+msgstr ""
+
+#: admin/views/help.php:20
+#: src/Settings/Settings.php:45
+msgid "Yes"
+msgstr ""
+
+#: admin/views/help.php:20
+#: src/Settings/Settings.php:46
+msgid "No"
+msgstr ""
+
+#: admin/views/help.php:24
+#: src/Admin/Admin.php:43
+msgid "Help / API Status"
+msgstr ""
+
+#: admin/views/help.php:29
+msgid "API connection"
+msgstr ""
+
+#: admin/views/help.php:31
+msgid "Base URL"
+msgstr ""
+
+#: admin/views/help.php:32
+msgid "Token stored"
+msgstr ""
+
+#: admin/views/help.php:33
+msgid "Last test"
+msgstr ""
+
+#: admin/views/help.php:36
+msgid "Connected"
+msgstr ""
+
+#: admin/views/help.php:36
+#: admin/views/logs.php:43
+#: admin/views/logs.php:71
+#: admin/views/logs.php:105
+#: src/Support/Status.php:31
+msgid "Failed"
+msgstr ""
+
+#: admin/views/help.php:37
+#: admin/views/settings.php:117
+msgid "ago"
+msgstr ""
+
+#: admin/views/help.php:45
+msgid "Not tested"
+msgstr ""
+
+#: admin/views/help.php:53
+msgid "Test connection"
+msgstr ""
+
+#: admin/views/help.php:55
+msgid "ParcelFlow documents no dedicated ping endpoint. The test makes one read-only call to GET /get-shipment-history for today with limit=1. It creates and changes nothing."
+msgstr ""
+
+#: admin/views/help.php:59
+msgid "Environment"
+msgstr ""
+
+#. translators: %s: version
+#: admin/views/help.php:63
+#, php-format
+msgid "minimum %s"
+msgstr ""
+
+#: admin/views/help.php:65
+msgid "HPOS enabled in this store"
+msgstr ""
+
+#: admin/views/help.php:66
+msgid "Checkout page uses Checkout Block"
+msgstr ""
+
+#: admin/views/help.php:73
+msgid "Set-up checklist"
+msgstr ""
+
+#. translators: %s: URL
+#: admin/views/help.php:75
+#, php-format
+msgid "Enter the API base URL and access token in <a href=\"%s\">Settings → General</a> and enable ParcelFlow."
+msgstr ""
+
+#. translators: %s: URL
+#: admin/views/help.php:76
+msgid "Fill in the sender / warehouse address (Settings → Sender). This is the dispatch address, not necessarily the store address."
+msgstr ""
+
+#: admin/views/help.php:77
+msgid "Add a ParcelFlow method to a WooCommerce shipping zone (WooCommerce → Settings → Shipping → zone → Add shipping method → ParcelFlow)."
+msgstr ""
+
+#: admin/views/help.php:78
+msgid "On every product set weight, dimensions (or use a fixed carton) and the HS tariff code (Product data → Shipping)."
+msgstr ""
+
+#: admin/views/help.php:79
+msgid "Place a test order. After payment, open ParcelFlow → Shipments (or the order) to book the shipment."
+msgstr ""
+
+#. translators: %s: URL
+#: admin/views/help.php:80
+#, php-format
+msgid "Customers can track at <a href=\"%1$s\">%1$s</a> and in My Account → Track Shipment."
+msgstr ""
+
+#: admin/views/help.php:85
+msgid "Compatibility"
+msgstr ""
+
+#: admin/views/help.php:87
+msgid "Order data is read and written only through WooCommerce CRUD, which is the HPOS-compatible approach. The plugin does NOT declare HPOS compatibility until it has been verified on a real store (see docs/TESTING.md)."
+msgstr ""
+
+#: admin/views/help.php:88
+msgid "Classic checkout: rates, carrier logos, delivery estimate and additional info are shown. Block checkout: rates are returned through WooCommerce’s standard shipping-rate API and shown as “Carrier (delivery time) – price”; logos are not shown. Block checkout behaviour must be verified on your store before relying on it."
+msgstr ""
+
+#: admin/views/help.php:89
+msgid "Storefront styling inherits your theme."
+msgstr ""
+
+#: admin/views/help.php:94
+msgid "Common errors & troubleshooting"
+msgstr ""
+
+#: admin/views/help.php:96
+msgid "Symptom"
+msgstr ""
+
+#: admin/views/help.php:96
+msgid "Likely cause / action"
+msgstr ""
+
+#: admin/views/help.php:98
+msgid "No ParcelFlow option at checkout"
+msgstr ""
+
+#: admin/views/help.php:98
+msgid "Plugin disabled, no token, method not added to the customer’s shipping zone, or a product is missing weight / dimensions / HS code. Check Logs for “Rates not requested”."
+msgstr ""
+
+#: admin/views/help.php:99
+msgid "Authentication failures (401/403)"
+msgstr ""
+
+#: admin/views/help.php:99
+msgid "Wrong token, or the header name is not received. Try the header name “Access-Token” in Settings → Advanced and confirm with ParcelFlow; many servers drop headers containing underscores."
+msgstr ""
+
+#: admin/views/help.php:100
+msgid "Rates show but booking is blocked: “No rate_id”"
+msgstr ""
+
+#: admin/views/help.php:100
+msgid "The documented Calculate Shipment Cost response does not include rate_id. Obtain it from ParcelFlow; an administrator may enter it manually when booking."
+msgstr ""
+
+#: admin/views/help.php:101
+msgid "Booking rejected: wallet / payment errors"
+msgstr ""
+
+#: admin/views/help.php:101
+msgid "Create Shipment requires payment_method “Wallet”. Confirm with ParcelFlow how the wallet is funded."
+msgstr ""
+
+#: admin/views/help.php:102
+msgid "Booking outcome uncertain"
+msgstr ""
+
+#: admin/views/help.php:102
+msgid "A timeout or unreadable response occurred. The plugin will not retry. Open the shipment, look up recent shipments in ParcelFlow, then link the existing one or confirm none exists."
+msgstr ""
+
+#: admin/views/help.php:103
+msgid "Tracking shows no events"
+msgstr ""
+
+#: admin/views/help.php:103
+msgid "The tracking endpoint is keyed by shipment number. Events appear once ParcelFlow records them. Use Refresh tracking."
+msgstr ""
+
+#: admin/views/help.php:104
+msgid "Prices not shown / “currently unavailable”"
+msgstr ""
+
+#: admin/views/help.php:104
+msgid "The ParcelFlow price currency (Settings → General) differs from the store currency. No conversion is done."
+msgstr ""
+
+#: admin/views/help.php:110
+msgid "Open questions for ParcelFlow"
+msgstr ""
+
+#: admin/views/help.php:111
+msgid "The following are not defined by the API documentation and are isolated in the code and settings. See docs/API-QUESTIONS.md for the full list."
+msgstr ""
+
+#: admin/views/help.php:113
+msgid "Where is rate_id returned? (Required by Create Shipment; absent from the Calculate Shipment Cost sample.)"
+msgstr ""
+
+#: admin/views/help.php:114
+msgid "Production base URL and exact authentication header / token format."
+msgstr ""
+
+#: admin/views/help.php:115
+msgid "Wallet payment: how the merchant wallet is funded and debited; can booking follow external WooCommerce payment?"
+msgstr ""
+
+#: admin/views/help.php:116
+msgid "Shipment type rules (Local / Interstate / International / Import) and rate expiry."
+msgstr ""
+
+#: admin/views/help.php:117
+msgid "Webhook support (none documented; tracking uses polling)."
+msgstr ""
+
+#: admin/views/logs.php:33
+#: src/Admin/Admin.php:42
+msgid "Logs"
+msgstr ""
+
+#: admin/views/logs.php:37
+msgid "Back to logs"
+msgstr ""
+
+#: admin/views/logs.php:39
+msgid "Log entry"
+msgstr ""
+
+#: admin/views/logs.php:41
+msgid "Date"
+msgstr ""
+
+#: admin/views/logs.php:42
+#: admin/views/logs.php:84
+msgid "Event"
+msgstr ""
+
+#: admin/views/logs.php:43
+msgid "Result"
+msgstr ""
+
+#: admin/views/logs.php:43
+#: admin/views/logs.php:70
+#: admin/views/logs.php:105
+msgid "Success"
+msgstr ""
+
+#: admin/views/logs.php:44
+#: admin/views/logs.php:85
+#: admin/views/shipments.php:73
+#: admin/views/shipments.php:93
+msgid "Order"
+msgstr ""
+
+#: admin/views/logs.php:45
+#: admin/views/logs.php:86
+#: admin/views/shipment-detail.php:59
+msgid "Shipment"
+msgstr ""
+
+#: admin/views/logs.php:46
+#: admin/views/logs.php:87
+msgid "Endpoint"
+msgstr ""
+
+#: admin/views/logs.php:47
+msgid "HTTP code"
+msgstr ""
+
+#: admin/views/logs.php:48
+#: admin/views/logs.php:90
+msgid "Message"
+msgstr ""
+
+#: admin/views/logs.php:51
+msgid "Details (redacted)"
+msgstr ""
+
+#: admin/views/logs.php:62
+msgid "Event type"
+msgstr ""
+
+#: admin/views/logs.php:63
+msgid "All events"
+msgstr ""
+
+#: admin/views/logs.php:68
+#: admin/views/logs.php:89
+#: admin/views/shipment-detail.php:185
+#: admin/views/shipments.php:78
+#: frontend/views/order-shipment-info.php:25
+msgid "Status"
+msgstr ""
+
+#: admin/views/logs.php:69
+msgid "Any status"
+msgstr ""
+
+#: admin/views/logs.php:73
+msgid "Order ID"
+msgstr ""
+
+#: admin/views/logs.php:74
+#: admin/views/shipments.php:62
+msgid "From"
+msgstr ""
+
+#: admin/views/logs.php:76
+#: admin/views/shipments.php:64
+msgid "To"
+msgstr ""
+
+#: admin/views/logs.php:78
+#: admin/views/shipments.php:66
+msgid "Filter"
+msgstr ""
+
+#: admin/views/logs.php:83
+msgid "Date & time"
+msgstr ""
+
+#: admin/views/logs.php:88
+msgid "HTTP"
+msgstr ""
+
+#: admin/views/logs.php:95
+msgid "No log entries match."
+msgstr ""
+
+#: admin/views/logs.php:107
+msgid "View details"
+msgstr ""
+
+#. translators: %s: number
+#: admin/views/logs.php:115
+#, php-format
+msgid "%s entry"
+msgid_plural "%s entries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/views/logs.php:136
+msgid "Clear all logs"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:24
+msgid "This order does not use a ParcelFlow shipping method."
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:30
+msgid "Selected carrier"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:34
+msgid "Quoted rate"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:40
+msgid "Shipment record is created when the order is paid. Reload this page."
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:46
+#: admin/views/shipment-detail.php:185
+#: admin/views/shipments.php:74
+msgid "Shipment #"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:47
+#: admin/views/shipments.php:75
+msgid "Tracking #"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:52
+#: admin/views/shipment-detail.php:68
+msgid "Download label"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:53
+#: admin/views/shipment-detail.php:77
+msgid "Refresh tracking"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:63
+msgid "No rate_id was returned for this rate. Enter one on the shipment page to book."
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:64
+msgid "Open booking page"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:67
+#: admin/views/shipment-detail.php:141
+msgid "Retry booking"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:67
+msgid "Book ParcelFlow Shipment"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:71
+msgid "Outcome uncertain. Do not rebook."
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:72
+msgid "Reconcile"
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:74
+msgid "A booking request is in progress."
+msgstr ""
+
+#: admin/views/order-shipment-panel.php:76
+msgid "Full shipment details"
+msgstr ""
+
+#: admin/views/settings.php:23
+#: src/Admin/Admin.php:41
+#: src/Plugin.php:93
+msgid "Settings"
+msgstr ""
+
+#: admin/views/settings.php:26
+msgid "Settings sections"
+msgstr ""
+
+#: admin/views/settings.php:50
+msgid "Enabled"
+msgstr ""
+
+#: admin/views/settings.php:63
+msgid "— Select —"
+msgstr ""
+
+#: admin/views/settings.php:71
+msgid "The token is defined by the PARCELFLOW_WC_ACCESS_TOKEN constant in wp-config.php."
+msgstr ""
+
+#: admin/views/settings.php:75
+msgid "A token is stored (encrypted). Enter a new value to replace it, or leave blank to keep it."
+msgstr ""
+
+#: admin/views/settings.php:75
+msgid "Paste the ACCESS_TOKEN issued by ParcelFlow. It is stored encrypted and used only server-side."
+msgstr ""
+
+#: admin/views/settings.php:77
+msgid "Remove stored token"
+msgstr ""
+
+#: admin/views/settings.php:104
+msgid "Available carriers"
+msgstr ""
+
+#: admin/views/settings.php:105
+msgid "Carrier IDs are controlled by ParcelFlow and are never hardcoded. Carriers appear here after they have been returned by a real rate calculation. Untick a carrier to hide it at checkout."
+msgstr ""
+
+#: admin/views/settings.php:107
+msgid "Show at checkout"
+msgstr ""
+
+#: admin/views/settings.php:107
+#: admin/views/shipment-detail.php:66
+#: admin/views/shipment-detail.php:185
+#: admin/views/shipments.php:76
+#: frontend/views/order-shipment-info.php:22
+msgid "Carrier"
+msgstr ""
+
+#: admin/views/settings.php:107
+msgid "Carrier ID"
+msgstr ""
+
+#: admin/views/settings.php:107
+msgid "Last seen"
+msgstr ""
+
+#: admin/views/settings.php:110
+msgid "No carriers seen yet. Place a test order at checkout with a valid token to populate this list."
+msgstr ""
+
+#: admin/views/settings.php:124
+msgid "Save changes"
+msgstr ""
+
+#. translators: %s: order number
+#: admin/views/shipment-detail.php:47
+#, php-format
+msgid "Shipment for order #%s"
+msgstr ""
+
+#: admin/views/shipment-detail.php:49
+msgid "All shipments"
+msgstr ""
+
+#: admin/views/shipment-detail.php:52
+msgid "Booking outcome uncertain."
+msgstr ""
+
+#: admin/views/shipment-detail.php:52
+msgid "Do not rebook until you have checked ParcelFlow."
+msgstr ""
+
+#: admin/views/shipment-detail.php:61
+msgid "Booking state"
+msgstr ""
+
+#: admin/views/shipment-detail.php:62
+msgid "ParcelFlow status"
+msgstr ""
+
+#: admin/views/shipment-detail.php:63
+#: frontend/views/order-shipment-info.php:23
+msgid "Shipment number"
+msgstr ""
+
+#: admin/views/shipment-detail.php:64
+msgid "ParcelFlow shipment ID"
+msgstr ""
+
+#: admin/views/shipment-detail.php:65
+#: frontend/views/order-shipment-info.php:24
+msgid "Tracking number"
+msgstr ""
+
+#: admin/views/shipment-detail.php:67
+#: admin/views/shipment-detail.php:147
+msgid "Rate ID"
+msgstr ""
+
+#: admin/views/shipment-detail.php:67
+msgid "not available"
+msgstr ""
+
+#: admin/views/shipment-detail.php:68
+#: admin/views/shipments.php:108
+msgid "Label"
+msgstr ""
+
+#: admin/views/shipment-detail.php:69
+#: admin/views/shipment-detail.php:185
+#: admin/views/shipments.php:79
+msgid "Created"
+msgstr ""
+
+#: admin/views/shipment-detail.php:70
+msgid "Last tracking refresh"
+msgstr ""
+
+#: admin/views/shipment-detail.php:74
+msgid "View WooCommerce order"
+msgstr ""
+
+#: admin/views/shipment-detail.php:83
+msgid "Fees"
+msgstr ""
+
+#: admin/views/shipment-detail.php:85
+msgid "Rate quoted at checkout"
+msgstr ""
+
+#: admin/views/shipment-detail.php:87
+msgid "Standard fee"
+msgstr ""
+
+#: admin/views/shipment-detail.php:88
+msgid "Services fee"
+msgstr ""
+
+#: admin/views/shipment-detail.php:89
+msgid "Extras (pickup + insurance)"
+msgstr ""
+
+#: admin/views/shipment-detail.php:90
+msgid "Submitted shipping fee"
+msgstr ""
+
+#: admin/views/shipment-detail.php:92
+msgid "Total fee (ParcelFlow)"
+msgstr ""
+
+#: admin/views/shipment-detail.php:97
+#: src/Shipping/PayloadMapper.php:57
+msgid "Sender"
+msgstr ""
+
+#: admin/views/shipment-detail.php:97
+msgid "current settings"
+msgstr ""
+
+#: admin/views/shipment-detail.php:101
+#: admin/views/shipment-detail.php:185
+#: src/Shipping/PayloadMapper.php:136
+msgid "Receiver"
+msgstr ""
+
+#: admin/views/shipment-detail.php:107
+msgid "Package contents"
+msgstr ""
+
+#: admin/views/shipment-detail.php:107
+msgid "preview – not yet sent"
+msgstr ""
+
+#: admin/views/shipment-detail.php:109
+msgid "Package data cannot be built yet (see the order for missing weights, dimensions or HS codes)."
+msgstr ""
+
+#: admin/views/shipment-detail.php:112
+msgid "Weight:"
+msgstr ""
+
+#: admin/views/shipment-detail.php:112
+msgid "Dimensions:"
+msgstr ""
+
+#: admin/views/shipment-detail.php:112
+msgid "Items:"
+msgstr ""
+
+#: admin/views/shipment-detail.php:114
+msgid "Item"
+msgstr ""
+
+#: admin/views/shipment-detail.php:114
+msgid "Qty"
+msgstr ""
+
+#: admin/views/shipment-detail.php:114
+msgid "Declared value / unit"
+msgstr ""
+
+#: admin/views/shipment-detail.php:114
+msgid "Weight / unit (kg)"
+msgstr ""
+
+#: admin/views/shipment-detail.php:114
+msgid "HS code"
+msgstr ""
+
+#: admin/views/shipment-detail.php:125
+msgid "Tracking history"
+msgstr ""
+
+#: admin/views/shipment-detail.php:127
+msgid "No tracking events stored yet. Use “Refresh tracking”."
+msgstr ""
+
+#: admin/views/shipment-detail.php:138
+msgid "This order is no longer in a paid status, so it cannot be booked."
+msgstr ""
+
+#: admin/views/shipment-detail.php:141
+msgid "Book shipment"
+msgstr ""
+
+#: admin/views/shipment-detail.php:149
+msgid "The Calculate Shipment Cost response did not return a rate_id, but Create Shipment requires one. Enter the rate ID supplied by ParcelFlow for this carrier and shipment. It is never guessed."
+msgstr ""
+
+#: admin/views/shipment-detail.php:151
+msgid "Book ParcelFlow shipment"
+msgstr ""
+
+#: admin/views/shipment-detail.php:158
+msgid "Reconcile booking"
+msgstr ""
+
+#: admin/views/shipment-detail.php:159
+msgid "The booking request may have reached ParcelFlow. Check whether a shipment exists, then either link it to this order or confirm that none was created."
+msgstr ""
+
+#: admin/views/shipment-detail.php:175
+msgid "Look up recent shipments in ParcelFlow"
+msgstr ""
+
+#: admin/views/shipment-detail.php:188
+msgid "ParcelFlow returned no shipments for this date range."
+msgstr ""
+
+#: admin/views/shipment-detail.php:207
+msgid "Link selected shipment to this order"
+msgstr ""
+
+#: admin/views/shipment-detail.php:217
+msgid "I have verified in ParcelFlow that no shipment was created for this order."
+msgstr ""
+
+#: admin/views/shipment-detail.php:218
+msgid "Allow a new booking attempt"
+msgstr ""
+
+#: admin/views/shipments.php:34
+#: src/Admin/Admin.php:40
+msgid "Shipments"
+msgstr ""
+
+#: admin/views/shipments.php:37
+msgid "Shipment totals"
+msgstr ""
+
+#: admin/views/shipments.php:38
+msgid "Total shipments"
+msgstr ""
+
+#: admin/views/shipments.php:45
+msgid "All"
+msgstr ""
+
+#: admin/views/shipments.php:60
+msgid "Search shipments"
+msgstr ""
+
+#: admin/views/shipments.php:61
+msgid "Order #, shipment # or tracking #"
+msgstr ""
+
+#: admin/views/shipments.php:67
+msgid "Export CSV"
+msgstr ""
+
+#: admin/views/shipments.php:77
+msgid "Shipping fee"
+msgstr ""
+
+#: admin/views/shipments.php:80
+msgid "Actions"
+msgstr ""
+
+#: admin/views/shipments.php:85
+msgid "No shipments found. Shipments appear here once a ParcelFlow order has been paid."
+msgstr ""
+
+#: admin/views/shipments.php:103
+msgid "View"
+msgstr ""
+
+#: admin/views/shipments.php:105
+msgid "Refresh"
+msgstr ""
+
+#. translators: %s: number
+#: admin/views/shipments.php:118
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: frontend/views/order-shipment-info.php:18
+msgid "Shipment Information"
+msgstr ""
+
+#: frontend/views/order-shipment-info.php:25
+#: src/Support/Status.php:39
+msgid "Booked"
+msgstr ""
+
+#: frontend/views/order-shipment-info.php:27
+msgid "Shipping date"
+msgstr ""
+
+#: frontend/views/order-shipment-info.php:32
+#: src/Tracking/TrackingPage.php:47
+#: src/Tracking/TrackingPage.php:111
+#: src/Tracking/TrackingPage.php:116
+#: src/Tracking/TrackingPage.php:122
+msgid "Track Shipment"
+msgstr ""
+
+#: frontend/views/order-shipment-info.php:35
+msgid "Your order has been paid and your shipment is being prepared. Tracking details will appear here once it has been booked with the carrier."
+msgstr ""
+
+#: frontend/views/order-shipment-info.php:37
+msgid "Shipment details will be available once your payment has been confirmed."
+msgstr ""
+
+#: frontend/views/tracking.php:21
+msgid "Enter your tracking number to get the latest delivery updates."
+msgstr ""
+
+#: frontend/views/tracking.php:24
+msgid "Track"
+msgstr ""
+
+#: frontend/views/tracking.php:44
+msgid "Carrier:"
+msgstr ""
+
+#: frontend/views/tracking.php:47
+msgid "Tracking number:"
+msgstr ""
+
+#: frontend/views/tracking.php:61
+msgid "No tracking updates are available yet. Please check back soon."
+msgstr ""
+
+#: parcelflow-for-woocommerce.php:30
+msgid "ParcelFlow for WooCommerce requires PHP 7.4 or newer."
+msgstr ""
+
+#: src/Admin/Actions.php:44
+msgid "You do not have permission to do that."
+msgstr ""
+
+#: src/Admin/Actions.php:72
+msgid "Settings saved. "
+msgstr ""
+
+#: src/Admin/Actions.php:72
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Actions.php:96
+msgid "This order has no booked shipment to track."
+msgstr ""
+
+#: src/Admin/Actions.php:99
+msgid "Tracking refreshed."
+msgstr ""
+
+#: src/Admin/Actions.php:118
+msgid "Tick the confirmation box to continue."
+msgstr ""
+
+#: src/Admin/Actions.php:176
+msgid "Connection OK: the API accepted the token and returned a valid response."
+msgstr ""
+
+#: src/Admin/Actions.php:184
+msgid "Logs cleared."
+msgstr ""
+
+#: src/Admin/Admin.php:32
+msgid "ParcelFlow Shipments"
+msgstr ""
+
+#: src/Admin/Admin.php:33
+#: src/Shipping/ShippingMethod.php:25
+#: src/Shipping/ShippingMethod.php:37
+msgid "ParcelFlow"
+msgstr ""
+
+#: src/Admin/Admin.php:58
+msgid "Book this shipment with ParcelFlow now? A request will be sent once and cannot be duplicated."
+msgstr ""
+
+#: src/Admin/Admin.php:59
+msgid "Only continue if you have verified in ParcelFlow that NO shipment exists for this order. Allow a new booking attempt?"
+msgstr ""
+
+#: src/Admin/Admin.php:60
+msgid "Delete all log entries?"
+msgstr ""
+
+#. translators: %s: settings URL
+#: src/Admin/Admin.php:78
+#, php-format
+msgid "No ParcelFlow access token is stored. <a href=\"%s\">Add it in Settings</a>."
+msgstr ""
+
+#: src/Admin/Admin.php:84
+msgid "Environment is set to Production but the API base URL still points at the staging server."
+msgstr ""
+
+#: src/Admin/Admin.php:112
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: src/Admin/ShipmentsPage.php:83
+msgid "Shipment record not found."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Api/Client.php:140
+#, php-format
+msgid "ParcelFlow returned an unreadable response (HTTP %d)."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: src/Api/Client.php:157
+#, php-format
+msgid "ParcelFlow request failed (HTTP %d)."
+msgstr ""
+
+#: src/Api/Client.php:171
+msgid "No ParcelFlow access token is configured."
+msgstr ""
+
+#: src/Api/Client.php:174
+msgid "The ParcelFlow API base URL is missing or invalid."
+msgstr ""
+
+#: src/Api/Client.php:178
+msgid "The ParcelFlow API base URL must use HTTPS so the access token is not sent in clear text."
+msgstr ""
+
+#: src/Api/Client.php:186
+msgid "The request to ParcelFlow timed out."
+msgstr ""
+
+#: src/Api/Client.php:188
+msgid "Could not connect to ParcelFlow."
+msgstr ""
+
+#: src/Booking/BookingService.php:47
+msgid "ParcelFlow is not enabled or no access token is configured."
+msgstr ""
+
+#: src/Booking/BookingService.php:50
+msgid "The order has not been paid (status must be Processing or Completed)."
+msgstr ""
+
+#: src/Booking/BookingService.php:53
+msgid "The order does not use a ParcelFlow shipping method."
+msgstr ""
+
+#: src/Booking/BookingService.php:66
+msgid "Order not found."
+msgstr ""
+
+#: src/Booking/BookingService.php:80
+msgid "A shipment has already been booked for this order."
+msgstr ""
+
+#: src/Booking/BookingService.php:82
+msgid "A booking request for this order is already in progress."
+msgstr ""
+
+#: src/Booking/BookingService.php:84
+msgid "The previous booking outcome is uncertain. Reconcile it with ParcelFlow before booking again."
+msgstr ""
+
+#: src/Booking/BookingService.php:94
+msgid "The selected ParcelFlow carrier/rate was not retained on the order."
+msgstr ""
+
+#: src/Booking/BookingService.php:104
+msgid "No rate_id is available. The Create Shipment endpoint requires one, but the Calculate Shipment Cost response did not return it. Enter the rate ID supplied by ParcelFlow, or wait for ParcelFlow to confirm where it is returned."
+msgstr ""
+
+#: src/Booking/BookingService.php:118
+msgid "Shipment type could not be determined."
+msgstr ""
+
+#: src/Booking/BookingService.php:121
+msgid "The order currency differs from the ParcelFlow price currency; no conversion is performed."
+msgstr ""
+
+#: src/Booking/BookingService.php:139
+msgid "Another booking request holds this order. No request was sent."
+msgstr ""
+
+#. translators: %s: manual/automatic
+#: src/Booking/BookingService.php:152
+#, php-format
+msgid "Booking attempt started (%s)."
+msgstr ""
+
+#: src/Booking/BookingService.php:169
+msgid "ParcelFlow reported success but returned no shipment reference."
+msgstr ""
+
+#. translators: 1: shipment number, 2: tracking number
+#: src/Booking/BookingService.php:186
+#, php-format
+msgid "ParcelFlow shipment booked. Shipment %1$s, tracking %2$s."
+msgstr ""
+
+#: src/Booking/BookingService.php:188
+msgid "Shipment booked with ParcelFlow."
+msgstr ""
+
+#. translators: %s: error
+#: src/Booking/BookingService.php:199
+#, php-format
+msgid "ParcelFlow booking failed: %s"
+msgstr ""
+
+#: src/Booking/BookingService.php:216
+msgid "Only orders with an uncertain booking can be linked."
+msgstr ""
+
+#: src/Booking/BookingService.php:220
+msgid "A shipment number is required."
+msgstr ""
+
+#. translators: %s: shipment number
+#: src/Booking/BookingService.php:233
+#, php-format
+msgid "ParcelFlow shipment %s was linked manually during reconciliation."
+msgstr ""
+
+#: src/Booking/BookingService.php:242
+msgid "Shipment linked. Tracking details will update on the next refresh."
+msgstr ""
+
+#: src/Booking/BookingService.php:252
+msgid "Only uncertain bookings can be cleared."
+msgstr ""
+
+#: src/Booking/BookingService.php:258
+msgid "Administrator confirmed that no shipment was created; retry permitted."
+msgstr ""
+
+#: src/Booking/BookingService.php:263
+msgid "Administrator confirmed no ParcelFlow shipment exists for this order; booking can be retried."
+msgstr ""
+
+#: src/Booking/BookingService.php:272
+msgid "Booking unlocked. You can retry."
+msgstr ""
+
+#: src/Booking/BookingService.php:288
+msgid "The shipment may or may not have been created; it will not be retried automatically."
+msgstr ""
+
+#: src/Booking/BookingService.php:296
+msgid "ParcelFlow booking outcome is UNCERTAIN. Do not rebook until reconciled (ParcelFlow → Shipments)."
+msgstr ""
+
+#. translators: 1: site name, 2: order number
+#: src/Booking/BookingService.php:328
+#, php-format
+msgid "[%1$s] ParcelFlow booking UNCERTAIN for order #%2$s"
+msgstr ""
+
+#. translators: 1: site name, 2: order number
+#: src/Booking/BookingService.php:328
+#, php-format
+msgid "[%1$s] ParcelFlow booking failed for order #%2$s"
+msgstr ""
+
+#: src/Orders/OrderIntegration.php:125
+msgid "Order is eligible for ParcelFlow shipment booking."
+msgstr ""
+
+#: src/Orders/OrderIntegration.php:160
+msgid "ParcelFlow Shipment"
+msgstr ""
+
+#: src/Plugin.php:72
+msgid "ParcelFlow for WooCommerce requires WooCommerce to be installed and active."
+msgstr ""
+
+#. translators: %s: minimum WooCommerce version
+#: src/Plugin.php:79
+#, php-format
+msgid "ParcelFlow for WooCommerce requires WooCommerce %s or newer."
+msgstr ""
+
+#: src/Products/ProductFields.php:29
+msgid "HS tariff code"
+msgstr ""
+
+#: src/Products/ProductFields.php:31
+msgid "Harmonized System code sent to ParcelFlow for customs (e.g. 6403.99). Required by the API for every item."
+msgstr ""
+
+#: src/Products/ProductFields.php:38
+msgid "ParcelFlow declared value (per unit)"
+msgstr ""
+
+#: src/Products/ProductFields.php:41
+msgid "Optional. Overrides the declared value per unit sent to ParcelFlow. Leave blank to use the store setting."
+msgstr ""
+
+#: src/Products/ProductFields.php:47
+msgid "Customs description"
+msgstr ""
+
+#: src/Products/ProductFields.php:49
+msgid "Optional. Short plain description (letters and numbers only) used instead of the product description."
+msgstr ""
+
+#: src/Settings/Settings.php:30
+msgid "General"
+msgstr ""
+
+#: src/Settings/Settings.php:31
+msgid "Sender / Warehouse"
+msgstr ""
+
+#: src/Settings/Settings.php:32
+msgid "Shipping & Booking"
+msgstr ""
+
+#: src/Settings/Settings.php:33
+msgid "Carriers / Services"
+msgstr ""
+
+#: src/Settings/Settings.php:34
+msgid "Advanced"
+msgstr ""
+
+#: src/Settings/Settings.php:56
+msgid "Enable ParcelFlow"
+msgstr ""
+
+#: src/Settings/Settings.php:57
+msgid "Master switch. When off, no ParcelFlow rates are requested and no shipments are booked."
+msgstr ""
+
+#: src/Settings/Settings.php:63
+msgid "API environment"
+msgstr ""
+
+#: src/Settings/Settings.php:65
+msgid "Staging"
+msgstr ""
+
+#: src/Settings/Settings.php:66
+msgid "Production"
+msgstr ""
+
+#: src/Settings/Settings.php:68
+msgid "Label only. The API base URL below is what is actually used."
+msgstr ""
+
+#: src/Settings/Settings.php:74
+msgid "API base URL"
+msgstr ""
+
+#: src/Settings/Settings.php:75
+msgid "The supplied documentation only provides the staging URL. A production URL has not been provided yet; obtain it from ParcelFlow before launch."
+msgstr ""
+
+#: src/Settings/Settings.php:80
+msgid "Access token"
+msgstr ""
+
+#: src/Settings/Settings.php:86
+msgid "Enable checkout rates"
+msgstr ""
+
+#: src/Settings/Settings.php:87
+msgid "Request live ParcelFlow rates at cart and checkout."
+msgstr ""
+
+#: src/Settings/Settings.php:93
+msgid "Display carrier logos"
+msgstr ""
+
+#: src/Settings/Settings.php:94
+msgid "Classic checkout only. Logo URLs are taken from the API response."
+msgstr ""
+
+#: src/Settings/Settings.php:100
+msgid "Currency of ParcelFlow prices"
+msgstr ""
+
+#: src/Settings/Settings.php:102
+msgid "The API response does not state the currency of selling_price. Leave blank to assume it equals the store currency. If you enter a code different from the store currency, rates are NOT shown at checkout (no currency conversion is performed)."
+msgstr ""
+
+#: src/Settings/Settings.php:110
+msgid "Business name"
+msgstr ""
+
+#: src/Settings/Settings.php:116
+msgid "Address line 1"
+msgstr ""
+
+#: src/Settings/Settings.php:122
+msgid "Address line 2"
+msgstr ""
+
+#: src/Settings/Settings.php:128
+msgid "City"
+msgstr ""
+
+#: src/Settings/Settings.php:134
+msgid "State / Province"
+msgstr ""
+
+#: src/Settings/Settings.php:135
+msgid "State name or WooCommerce state code (e.g. Lagos or LA)."
+msgstr ""
+
+#: src/Settings/Settings.php:141
+msgid "Country"
+msgstr ""
+
+#: src/Settings/Settings.php:147
+msgid "Postcode"
+msgstr ""
+
+#: src/Settings/Settings.php:153
+msgid "Phone"
+msgstr ""
+
+#: src/Settings/Settings.php:159
+msgid "Email"
+msgstr ""
+
+#: src/Settings/Settings.php:167
+msgid "Default shipment type"
+msgstr ""
+
+#: src/Settings/Settings.php:169
+msgid "Auto-detect from sender and destination"
+msgstr ""
+
+#: src/Settings/Settings.php:175
+msgid "Auto-detect: different country = International; same country and state = Local; same country, different state = Interstate. ParcelFlow has not confirmed these business rules (see Help). \"Import\" is never auto-selected."
+msgstr ""
+
+#: src/Settings/Settings.php:181
+msgid "Default package type"
+msgstr ""
+
+#: src/Settings/Settings.php:191
+msgid "Booking mode"
+msgstr ""
+
+#: src/Settings/Settings.php:193
+msgid "Manual – administrator books each paid order"
+msgstr ""
+
+#: src/Settings/Settings.php:194
+msgid "Automatic – book in the background after payment"
+msgstr ""
+
+#: src/Settings/Settings.php:196
+msgid "Automatic booking is intended for future use: the Create Shipment endpoint requires a rate_id and a ParcelFlow wallet payment, neither of which is fully confirmed. Keep manual until ParcelFlow confirms both."
+msgstr ""
+
+#: src/Settings/Settings.php:202
+msgid "Booking payment method"
+msgstr ""
+
+#: src/Settings/Settings.php:203
+msgid "Sent as booking[payment_method]. The documentation states it \"must be Wallet for customers\". How the wallet is funded is unconfirmed."
+msgstr ""
+
+#: src/Settings/Settings.php:209
+msgid "Processing station ID"
+msgstr ""
+
+#: src/Settings/Settings.php:210
+msgid "Optional. Sent as booking[processing_station_id]."
+msgstr ""
+
+#: src/Settings/Settings.php:216
+msgid "Service station ID"
+msgstr ""
+
+#: src/Settings/Settings.php:217
+msgid "Optional. Sent at booking only."
+msgstr ""
+
+#: src/Settings/Settings.php:223
+msgid "Request pickup"
+msgstr ""
+
+#: src/Settings/Settings.php:229
+msgid "Pickup type ID"
+msgstr ""
+
+#: src/Settings/Settings.php:230
+msgid "Required when pickup is requested. The catalogue of pickup IDs is not documented; use the value supplied by ParcelFlow."
+msgstr ""
+
+#: src/Settings/Settings.php:236
+msgid "Request insurance"
+msgstr ""
+
+#: src/Settings/Settings.php:242
+msgid "Insurance type"
+msgstr ""
+
+#: src/Settings/Settings.php:243
+msgid "Required when insurance is requested (example in docs: \"Full Coverage\")."
+msgstr ""
+
+#: src/Settings/Settings.php:249
+msgid "Insurance fee"
+msgstr ""
+
+#: src/Settings/Settings.php:250
+msgid "Fixed fee submitted at booking. How ParcelFlow calculates insurance is not documented."
+msgstr ""
+
+#: src/Settings/Settings.php:258
+msgid "Rate cache duration (minutes)"
+msgstr ""
+
+#: src/Settings/Settings.php:259
+msgid "Rates are cached per exact payload (addresses, contents, weights, options). 0 disables caching. Rate validity is not documented by ParcelFlow, so keep this short."
+msgstr ""
+
+#: src/Settings/Settings.php:265
+msgid "Package dimension strategy"
+msgstr ""
+
+#: src/Settings/Settings.php:267
+msgid "Estimate: largest length & width, heights stacked"
+msgstr ""
+
+#: src/Settings/Settings.php:268
+msgid "Fixed carton dimensions (below)"
+msgstr ""
+
+#: src/Settings/Settings.php:270
+msgid "The whole cart is sent as ONE package. Product dimensions are never simply added together. Use a fixed carton for predictable results."
+msgstr ""
+
+#: src/Settings/Settings.php:276
+msgid "Fixed carton length (cm)"
+msgstr ""
+
+#: src/Settings/Settings.php:282
+msgid "Fixed carton width (cm)"
+msgstr ""
+
+#: src/Settings/Settings.php:288
+msgid "Fixed carton height (cm)"
+msgstr ""
+
+#: src/Settings/Settings.php:294
+msgid "Packaging weight (kg)"
+msgstr ""
+
+#: src/Settings/Settings.php:295
+msgid "Added to the total weight of the products."
+msgstr ""
+
+#: src/Settings/Settings.php:301
+msgid "Fallback item weight (kg)"
+msgstr ""
+
+#: src/Settings/Settings.php:302
+msgid "Used only for products with no weight. Leave blank to block rates when a weight is missing (recommended: no fabricated values)."
+msgstr ""
+
+#: src/Settings/Settings.php:308
+msgid "Fallback HS code"
+msgstr ""
+
+#: src/Settings/Settings.php:309
+msgid "hs_code is a required API field. Products without an HS code use this value; if blank, products without an HS code block rates."
+msgstr ""
+
+#: src/Settings/Settings.php:315
+msgid "Declared value basis"
+msgstr ""
+
+#: src/Settings/Settings.php:317
+msgid "Amount paid per unit (after discounts, excl. tax)"
+msgstr ""
+
+#: src/Settings/Settings.php:318
+msgid "Current product price per unit"
+msgstr ""
+
+#: src/Settings/Settings.php:320
+msgid "A per-product declared value overrides this. Values are sent in the store currency; no conversion is done. The API defines value as \"declared value per unit\"."
+msgstr ""
+
+#: src/Settings/Settings.php:328
+msgid "Additional services"
+msgstr ""
+
+#: src/Settings/Settings.php:330
+msgid "One per line: service_id|label|amount. Applied to every shipment (rate request and booking). Service IDs are provider-controlled; no catalogue endpoint is documented."
+msgstr ""
+
+#: src/Settings/Settings.php:340
+msgid "API timeout (seconds)"
+msgstr ""
+
+#: src/Settings/Settings.php:346
+msgid "Authentication header name"
+msgstr ""
+
+#: src/Settings/Settings.php:347
+msgid "The documentation says ACCESS_TOKEN is passed in the HTTP header and received as HTTP_ACCESS_TOKEN. Some web servers (e.g. nginx defaults) drop headers containing underscores; if authentication fails, ask ParcelFlow whether \"Access-Token\" is accepted."
+msgstr ""
+
+#: src/Settings/Settings.php:353
+msgid "Debug logging"
+msgstr ""
+
+#: src/Settings/Settings.php:354
+msgid "Also store redacted request/response bodies in the log and mirror errors to the WooCommerce logger. Personal data and the token are redacted."
+msgstr ""
+
+#: src/Settings/Settings.php:362
+msgid "Tracking refresh frequency (hours)"
+msgstr ""
+
+#: src/Settings/Settings.php:363
+msgid "Background polling of open shipments via Action Scheduler. 0 disables. ParcelFlow does not document webhooks."
+msgstr ""
+
+#: src/Settings/Settings.php:369
+msgid "Email on booking failure"
+msgstr ""
+
+#: src/Settings/Settings.php:375
+msgid "Notification email"
+msgstr ""
+
+#: src/Settings/Settings.php:376
+msgid "Defaults to the site admin email."
+msgstr ""
+
+#: src/Settings/Settings.php:384
+msgid "Log retention (days)"
+msgstr ""
+
+#: src/Settings/Settings.php:390
+msgid "Delete all data on uninstall"
+msgstr ""
+
+#: src/Settings/Settings.php:391
+msgid "Removes settings, token, shipment index and logs when the plugin is deleted. Order metadata is kept."
+msgstr ""
+
+#: src/Settings/Settings.php:467
+msgid "Pickup is enabled but no pickup type ID is set; bookings will be blocked until it is provided."
+msgstr ""
+
+#: src/Settings/Settings.php:470
+msgid "Insurance is enabled but the insurance type or fee is missing; bookings will be blocked until both are provided."
+msgstr ""
+
+#: src/Settings/Settings.php:473
+msgid "Fixed carton strategy is selected but the carton dimensions are incomplete; rates will be blocked."
+msgstr ""
+
+#: src/Shipping/PackageBuilder.php:70
+msgid "No shippable items."
+msgstr ""
+
+#. translators: %s: product name
+#: src/Shipping/PackageBuilder.php:88
+#, php-format
+msgid "\"%s\" has no weight."
+msgstr ""
+
+#. translators: %s: product name
+#: src/Shipping/PackageBuilder.php:98
+#, php-format
+msgid "\"%s\" has no HS tariff code."
+msgstr ""
+
+#. translators: %s: product name
+#: src/Shipping/PackageBuilder.php:171
+#, php-format
+msgid "\"%s\" is missing length, width or height."
+msgstr ""
+
+#: src/Shipping/PackageBuilder.php:185
+msgid "Fixed carton dimensions are not configured."
+msgstr ""
+
+#: src/Shipping/PackageBuilder.php:189
+msgid "Total package weight is zero."
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:57
+msgid "Settings → Sender / Warehouse"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:147
+msgid "name"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:148
+msgid "address"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:149
+msgid "city"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:150
+msgid "state"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:151
+msgid "country"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:152
+msgid "postcode"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:153
+msgid "phone"
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:154
+msgid "email"
+msgstr ""
+
+#. translators: 1: Sender/Receiver, 2: field name
+#: src/Shipping/PayloadMapper.php:160
+#, php-format
+msgid "%1$s %2$s is missing."
+msgstr ""
+
+#. translators: %s: Sender/Receiver
+#: src/Shipping/PayloadMapper.php:165
+#, php-format
+msgid "%s email is not valid."
+msgstr ""
+
+#. translators: %s: settings location
+#: src/Shipping/PayloadMapper.php:168
+#, php-format
+msgid "Configure it under %s."
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:322
+msgid "Insurance is enabled but the insurance type/fee is not configured."
+msgstr ""
+
+#. translators: %s: product name
+#: src/Shipping/PayloadMapper.php:333
+#, php-format
+msgid "\"%s\" needs a product image because insurance is requested."
+msgstr ""
+
+#: src/Shipping/PayloadMapper.php:340
+msgid "Pickup is enabled but no pickup type ID is configured."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:26
+msgid "Live carrier rates from ParcelFlow. Configure credentials and sender details under ParcelFlow → Settings."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:34
+msgid "Method title"
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:36
+msgid "Shown in the zone list. Customers see the carrier names returned by ParcelFlow."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:41
+msgid "Tax status"
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:46
+msgid "Taxable"
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:47
+msgctxt "Tax status"
+msgid "None"
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:70
+msgid "Enter your delivery address to see ParcelFlow shipping options."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:76
+#: src/Shipping/ShippingMethod.php:89
+#: src/Shipping/ShippingMethod.php:109
+msgid "Shipping rates are currently unavailable."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:77
+msgid "ParcelFlow price currency differs from the store currency; no conversion is performed so no rates were offered."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:83
+msgid "Complete your name, address, phone and email to see ParcelFlow shipping options."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:102
+msgid "Shipping cannot be calculated online for these items. Please contact us to arrange delivery."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:110
+msgid "Shipment type could not be determined (sender or receiver country missing)."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:119
+msgid "We could not retrieve ParcelFlow shipping rates right now. Please try again shortly."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:123
+msgid "No ParcelFlow carriers are available for this destination and package."
+msgstr ""
+
+#: src/Shipping/ShippingMethod.php:169
+msgid "Rates not requested: "
+msgstr ""
+
+#: src/Support/Logger.php:20
+msgid "Rate calculation"
+msgstr ""
+
+#: src/Support/Logger.php:21
+msgid "Shipment booking"
+msgstr ""
+
+#: src/Support/Logger.php:22
+msgid "Tracking"
+msgstr ""
+
+#: src/Support/Logger.php:23
+msgid "Shipment history"
+msgstr ""
+
+#: src/Support/Logger.php:24
+msgid "Shipment estimate"
+msgstr ""
+
+#: src/Support/Logger.php:25
+msgid "Connection test"
+msgstr ""
+
+#: src/Support/Logger.php:26
+msgid "Booking workflow"
+msgstr ""
+
+#: src/Support/Logger.php:27
+msgid "System"
+msgstr ""
+
+#: src/Support/Status.php:27
+msgid "Pending"
+msgstr ""
+
+#: src/Support/Status.php:28
+msgid "Processing"
+msgstr ""
+
+#: src/Support/Status.php:29
+msgid "In transit"
+msgstr ""
+
+#: src/Support/Status.php:30
+msgid "Delivered"
+msgstr ""
+
+#: src/Support/Status.php:37
+msgid "Awaiting booking"
+msgstr ""
+
+#: src/Support/Status.php:38
+msgid "Booking in progress"
+msgstr ""
+
+#: src/Support/Status.php:40
+msgid "Booking failed"
+msgstr ""
+
+#: src/Support/Status.php:41
+msgid "Outcome uncertain – reconcile"
+msgstr ""
+
+#: src/Tracking/TrackingService.php:112
+msgid "Please enter a tracking number."
+msgstr ""
+
+#: src/Tracking/TrackingService.php:118
+msgid "That tracking number format is not valid. Use letters, numbers and hyphens only."
+msgstr ""
+
+#: src/Tracking/TrackingService.php:124
+msgid "Too many lookups. Please wait a minute and try again."
+msgstr ""
+
+#: src/Tracking/TrackingService.php:132
+msgid "We could not find a shipment with that number. Check the number and try again."
+msgstr ""
+
+#: src/Tracking/TrackingService.php:156
+msgid "Live tracking is temporarily unavailable; showing the last known update."
+msgstr ""
+
+#: src/Tracking/TrackingService.php:164
+msgid "Tracking is temporarily unavailable. Please try again later."
+msgstr ""
